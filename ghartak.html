@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bazzarwala - गाँव की अपनी दुकान</title>
+    <link rel="stylesheet" href="ghartak.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Top-right admin icon (admin login double tap/click) -->
+    <div id="adminIconArea" title="एडमिन लॉगिन" tabindex="0"
+        style="position:absolute;top:20px;right:20px;z-index:1500;cursor:pointer;">
+        <svg width="30" height="30" fill="none" stroke="#6a0dad" stroke-width="2" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 5 15.4a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 5 8.6a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 8.6 5a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09c0 .66.39 1.26 1 1.51.45.19.92.33 1.38.33s.92-.14 1.38-.33c.66-.19 1.26-.98 1.82-.33a2.02 2.02 0 0 1 2.83 2.83l-.06.06c-.34.34-.66.81-.33 1.82.19.45.33.92.33 1.38s-.14.92-.33 1.38a1.65 1.65 0 0 0 .33 1.82z"/>
+        </svg>
+    </div>
+
+    <header class="sticky-header">
+        <div class="container">
+            <h1>Bazzarwala</h1>
+            <nav>
+                <ul>
+                    <li><a href="#products">उत्पाद</a></li>
+                    <li><a href="#order-form">ऑर्डर करें</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h2>गाँव की अपनी दुकान, अब आपके द्वार!</h2>
+                <p>मंडीहन और आस-पास के गाँवों में हर रोज़ की ज़रूरत का सामान, सीधे आपके घर तक.</p>
+                <button class="cta-button" onclick="location.href='#products'">उत्पाद देखें</button>
+            </div>
+        </section>
+
+        <section id="products" class="products-section shadowed-card">
+            <h2>हमारे उत्पाद</h2>
+            <div class="category-filter">
+                <button class="filter-btn active" data-category="सभी">सभी</button>
+                <button class="filter-btn" data-category="Masale">मसाले</button>
+                <button class="filter-btn" data-category="Grocery">ग्रोसरी</button>
+                <button class="filter-btn" data-category="Detergent">डिटर्जेंट</button>
+                <button class="filter-btn" data-category="Snacks">स्नैक्स</button>
+                <button class="filter-btn" data-category="Personal Care">पर्सनल केयर</button>
+                <button class="filter-btn" data-category="Baby Care">बेबी केयर</button>
+                <button class="filter-btn" data-category="Stationery">स्टेशनरी</button>
+            </div>
+            <div id="productList" class="product-grid"></div>
+        </section>
+
+        <section id="order-form" class="order-form-section shadowed-card">
+            <h2>अपना ऑर्डर दें</h2>
+            <form id="customerOrderForm" class="attractive-form">
+                <div class="form-group">
+                    <label for="productName">उत्पाद का नाम:</label>
+                    <select id="productName" name="productName" required>
+                        <option value="">उत्पाद चुनें</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="brand">ब्रांड (अगर कोई हो):</label>
+                    <input type="text" id="brand" name="brand" placeholder="ब्रांड का नाम">
+                </div>
+
+                <div class="form-group quantity-price-group">
+                    <label for="quantity">मात्रा:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+                    <span id="productPriceDisplay" class="product-price-display"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="customerName">आपका नाम:</label>
+                    <input type="text" id="customerName" name="customerName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="customerPhone">आपका फोन नंबर:</label>
+                    <input type="tel" id="customerPhone" name="customerPhone" pattern="[0-9]{10}" placeholder="उदाहरण: 7388731640" required>
+                    <small>कृपया 10 अंकों का मोबाइल नंबर दर्ज करें.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="deliveryVillage">गाँव चुनें:</label>
+                    <select id="deliveryVillage" name="deliveryVillage" required>
+                        <option value="">गाँव चुनें</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="deliveryAddress">पूरा पता (गली, मोहल्ला, मकान नंबर):</label>
+                    <textarea id="deliveryAddress" name="deliveryAddress" rows="3" required></textarea>
+                </div>
+
+                <button type="submit" class="cta-button">WhatsApp पर ऑर्डर भेजें</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Bazzarwala. All rights reserved.</p>
+            <p>संपर्क: 7388731640</p>
+        </div>
+    </footer>
+
+    <!-- Admin Login Modal -->
+    <div id="adminLoginModal" class="modal" style="display: none;">
+        <div class="modal-content shadowed-card">
+            <span class="close-button">&times;</span>
+            <h2>एडमिन लॉगिन</h2>
+            <form id="adminLoginForm" class="attractive-form">
+                <div class="form-group">
+                    <label for="adminId">यूजर ID:</label>
+                    <input type="text" id="adminId" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword">पासवर्ड:</label>
+                    <input type="password" id="adminPassword" required>
+                </div>
+                <button type="submit" class="cta-button">लॉगिन करें</button>
+                <p id="loginMessage" class="error-message"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Panel Modal -->
+    <div id="adminPanelModal" class="modal" style="display: none;">
+        <div class="modal-content shadowed-card">
+            <span class="close-button">&times;</span>
+            <h2>एडमिन पैनल</h2>
+            <div class="admin-tabs">
+                <button class="admin-tab-btn active" data-tab="products">उत्पाद प्रबंधन</button>
+                <button class="admin-tab-btn" data-tab="villages">गाँव प्रबंधन</button>
+            </div>
+
+            <div id="adminProductsTab" class="admin-tab-content active">
+                <h3>उत्पाद जोड़ें / संपादित करें</h3>
+                <form id="productManagementForm" class="attractive-form">
+                    <div class="form-group">
+                        <label for="productAddName">उत्पाद का नाम:</label>
+                        <input type="text" id="productAddName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productAddBrand">ब्रांड चुनें:</label>
+                        <select id="productAddBrand" required class="nice-select">
+                            <option value="">ब्रांड चुनें</option>
+                            <option value="आशीर्वाद">आशीर्वाद</option>
+                            <option value="भारत गोल्ड">भारत गोल्ड</option>
+                            <option value="पतंजलि">पतंजलि</option>
+                            <option value="एवरस्ट">एवरस्ट</option>
+                            <option value="गोल्डी">गोल्डी</option>
+                            <option value="MDH">MDH</option>
+                            <option value="फॉर्च्यून">फॉर्च्यून</option>
+                            <option value="लाइफबॉय">लाइफबॉय</option>
+                            <option value="रिन">रिन</option>
+                            <option value="पारले-जी">पारले-जी</option>
+                            <option value="अन्य">अन्य</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="productAddPrice">कीमत (₹):</label>
+                        <input type="number" id="productAddPrice" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productAddCategory">श्रेणी:</label>
+                        <select id="productAddCategory" required>
+                            <option value="">श्रेणी चुनें</option>
+                            <option value="Masale">मसाले</option>
+                            <option value="Grocery">ग्रोसरी</option>
+                            <option value="Detergent">डिटर्जेंट</option>
+                            <option value="Snacks">स्नैक्स</option>
+                            <option value="Personal Care">पर्सनल केयर</option>
+                            <option value="Baby Care">बेबी केयर</option>
+                            <option value="Stationery">स्टेशनरी</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="productAddStock">स्टॉक स्थिति:</label>
+                        <select id="productAddStock" required>
+                            <option value="true">इन स्टॉक</option>
+                            <option value="false">आउट ऑफ स्टॉक</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="cta-button">उत्पाद जोड़ें / अपडेट करें</button>
+                </form>
+
+                <h3>वर्तमान उत्पाद</h3>
+                <ul id="currentProductsList" class="product-admin-list"></ul>
+            </div>
+
+            <div id="adminVillagesTab" class="admin-tab-content">
+                <h3>डिलीवरी गाँव प्रबंधित करें</h3>
+                <form id="villageManagementForm" class="attractive-form">
+                    <div class="form-group">
+                        <label for="villageAddName">गाँव का नाम:</label>
+                        <input type="text" id="villageAddName" required>
+                    </div>
+                    <button type="submit" class="cta-button">गाँव जोड़ें</button>
+                </form>
+                <h3>वर्तमान डिलीवरी गाँव</h3>
+                <ul id="currentVillagesList" class="village-admin-list"></ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="ghartak.js"></script>
+</body>
+</html>
